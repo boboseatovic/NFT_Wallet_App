@@ -44,30 +44,22 @@ public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> 
     public void onBindViewHolder(@NonNull NFTsViewHolder holder, int position) {
         NFT nft = nft_data.get(position);
 
-        if (nft.single_attr) {
-            holder.itemView.setOnClickListener(v -> {
-                if (onClickListener != null) onClickListener.onItemClick(nft);
-            });
+        holder.itemView.setOnClickListener(v -> {
+            if (onClickListener != null) onClickListener.onItemClick(nft);
+        });
 
-            holder.NFTTitleTextView.setText(String.format("%s", nft.title));
+        holder.NFTTitleTextView.setText(String.format("%s", nft.title));
+
+        if (nft.single_attr) {
             holder.NFTisCollectionTextView.setText("Single NFT");
-            Glide.with(holder.NFTImageView)
-                    .load(nft.imageUrl)
-                    .placeholder(R.mipmap.ic_launcher_round)
-                    .into(holder.NFTImageView);
         } else {
-            if(collections.contains(nft.collection)) {
-                holder.itemView.setOnClickListener(v -> {
-                    if (onClickListener != null) onClickListener.onItemClick(nft);
-                });
-                holder.NFTTitleTextView.setText(String.format("%s", nft.collection));
-                holder.NFTisCollectionTextView.setText("NFT Collection");
-                Glide.with(holder.NFTImageView)
-                        .load("https://1734811051.rsc.cdn77.org/data/images/full/392378/monster-mob-nft-collection.png")
-                        .into(holder.NFTImageView);
-                collections.remove(nft.collection);
-            }
+            holder.NFTisCollectionTextView.setText("part of an" + nft.collection + "NFT Collection");
         }
+
+        Glide.with(holder.NFTImageView)
+                .load(nft.imageUrl)
+                .into(holder.NFTImageView);
+
     }
 
 
@@ -81,20 +73,7 @@ public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> 
         DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffUtilCallback);
         diffResult.dispatchUpdatesTo(this);
         this.nft_data = nft_data;
-        getNFTCollections();
     }
-
-    public static void getNFTCollections() {
-      collections = new ArrayList<>();
-
-      for (int i=0; i<nft_data.size()-1; i++) {
-          if(!collections.contains(nft_data.get(i).collection) && !nft_data.get(i).single_attr) {
-              collections.add(nft_data.get(i).collection);
-              Log.d("Collection", nft_data.get(i).collection);
-          }
-      }
-    }
-
 
 
 
@@ -117,6 +96,7 @@ public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> 
     public interface OnClickListener {
          void onItemClick(NFT item);
     }
+
 
     public void setOnClickListener(OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
