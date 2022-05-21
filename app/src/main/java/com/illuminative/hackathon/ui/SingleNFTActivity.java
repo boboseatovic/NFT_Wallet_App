@@ -25,8 +25,8 @@ import java.util.List;
 
 
 public class SingleNFTActivity extends AppCompatActivity {
-    private AppDatabase nftDb = AppDatabase.getInstance(this);
 
+    AppDatabase nftDb;
 
     private NFT nft;
 
@@ -53,7 +53,8 @@ public class SingleNFTActivity extends AppCompatActivity {
 
         setContentView(R.layout.single_nft);
         Intent intent = getIntent();
-        nftDb.NFTDao().getAll();
+
+        nftDb = AppDatabase.getInstance(this);
 
         imageUrlText = intent.getStringExtra(PreviewActivity.EXTRA_IMAGE_URL);
         titleText = intent.getStringExtra(PreviewActivity.EXTRA_TITLE);
@@ -97,6 +98,8 @@ public class SingleNFTActivity extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog,
                                                     int which)
                                 {
+
+                                    nftDb.NFTDao().delete(nft);
 
 
                                     finish();

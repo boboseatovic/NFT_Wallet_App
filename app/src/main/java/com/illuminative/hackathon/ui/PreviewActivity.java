@@ -46,9 +46,10 @@ public class PreviewActivity extends AppCompatActivity {
 
         setupRecyclerView();
 
+        setupDatabase();
+
         setupAddNewNFT();
 
-        setupDatabase();
     }
 
     private void setupRecyclerView() {
@@ -83,8 +84,13 @@ public class PreviewActivity extends AppCompatActivity {
     }
 
     private void setupDatabase() {
+
         nftDb = AppDatabase.getInstance(this);
+<<<<<<< HEAD
+        nftDb.NFTDao().insertNFTs(DataStorage.NFTs);
+=======
         //nftDb.NFTDao().insertNFTs(DataStorage.NFTs);
+>>>>>>> 5b356c71c1cd871a05acaec4a0d03e87241ed32f
         nftAdapter.update(nftDb.NFTDao().getAll());
     }
 
