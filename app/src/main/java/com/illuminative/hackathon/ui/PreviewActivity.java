@@ -13,6 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.illuminative.hackathon.R;
 import com.illuminative.hackathon.data.NFTs.DataStorage;
 import com.illuminative.hackathon.data.NFTs.NFTApp;
+import com.illuminative.hackathon.data.db.AppDatabase;
 import com.illuminative.hackathon.data.db.NFT;
 import com.illuminative.hackathon.data.db.NFTDAO;
 import com.illuminative.hackathon.domain.NFTAdapter;
@@ -25,13 +26,14 @@ public class PreviewActivity extends AppCompatActivity {
     public static final String EXTRA_TITLE = "com.illuminative.hackathon.ui.EXTRA_TITLE";
     public static final String EXTRA_PRICE = "com.illuminative.hackathon.ui.EXTRA_PRICE";
     public static final String EXTRA_COLLECTION = "com.illuminative.hackathon.ui.EXTRA_COLLECTION";
+    public static final String EXTRA_NFT = "com.illuminative.hackathon.ui.EXTRA_NFT";
 
     private FloatingActionButton addButton;
     private RecyclerView rvNFTs;
 
     private NFTAdapter nftAdapter;
 
-    private NFTDAO nftDAO;
+    private AppDatabase nftDb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +42,12 @@ public class PreviewActivity extends AppCompatActivity {
         setContentView(R.layout.preview_activity);
         rvNFTs = findViewById(R.id.rv_nft);
         rvNFTs.setAdapter(nftAdapter);
-        setupDatabase();
 
         setupRecyclerView();
 
         setupAddNewNFT();
 
-
+        setupDatabase();
     }
 
     private void setupRecyclerView() {
@@ -57,7 +58,6 @@ public class PreviewActivity extends AppCompatActivity {
 
         rvNFTs.setAdapter(nftAdapter);
 
-        nftDAO.getAll().observe(this, nftAdapter::update);
     }
 
     private void openSingleNFTActivity(@NonNull NFT nft) {
@@ -74,11 +74,13 @@ public class PreviewActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_TITLE, title);
         intent.putExtra(EXTRA_PRICE, price);
         intent.putExtra(EXTRA_COLLECTION, collection);
+        intent.putExtra(EXTRA_NFT, nft);
         startActivity(intent);
     }
 
     private void setupDatabase() {
-        nftDAO = NFTApp.DB.NFTDao();
+        nftDb = AppDatabase.getInstance(this);
+        nftAdapter.update(nftDb.NFTDao().getAll());
     }
 
     private void setupAddNewNFT() {

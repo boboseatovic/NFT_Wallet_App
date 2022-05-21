@@ -29,13 +29,11 @@
 
         <activity
             android:name=".ui.CreateNewNFTActivity"
-            android:exported="true"
-            ></activity>
+            android:exported="false" />
 
         <activity
             android:name=".ui.SingleNFTActivity"
-            android:exported="true"
-            ></activity>
+            android:exported="false" />
     </application>
 
 

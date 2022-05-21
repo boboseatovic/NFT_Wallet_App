@@ -14,6 +14,7 @@ import com.illuminative.hackathon.R;
 import com.illuminative.hackathon.data.db.NFT;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,7 +24,7 @@ import java.util.List;
 public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> {
 
     private OnClickListener onClickListener;
-    private static List<NFT> nft_data;
+    private List<NFT> nft_data;
     private static List<String> collections;
     private static List<String> newCollections;
 
@@ -74,8 +75,6 @@ public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> 
         diffResult.dispatchUpdatesTo(this);
         this.nft_data = nft_data;
     }
-
-
 
     public static class NFTsViewHolder extends RecyclerView.ViewHolder{
 
