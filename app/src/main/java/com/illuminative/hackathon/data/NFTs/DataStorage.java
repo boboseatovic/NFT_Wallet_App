@@ -50,7 +50,7 @@ public class DataStorage {
                     1.0,
                     "Chimpers",
                     false,
-                    false
+                    true
 
             ),
             new NFT(
@@ -105,7 +105,7 @@ public class DataStorage {
                     0.117,
                     "Rich Baby",
                     false,
-                    false
+                    true
 
             ),
             new NFT(
@@ -171,7 +171,7 @@ public class DataStorage {
                     18880.0,
                     "Bored Ape Yacht CLub",
                     false,
-                    false
+                    true
 
             ),
             new NFT(
@@ -216,7 +216,7 @@ public class DataStorage {
                     9999.0,
                     "Bored Ape Yacht CLub",
                     false,
-                    false
+                    true
 
             ),
             new NFT(
@@ -227,7 +227,7 @@ public class DataStorage {
                     6969.0,
                     "Bored Ape Yacht CLub",
                     false,
-                    false
+                    true
 
             ),
 

@@ -90,7 +90,6 @@ public class PreviewActivity extends AppCompatActivity {
     }
 
     private void setupDatabase() {
-
         nftDb = AppDatabase.getInstance(this);
         //nftDb.NFTDao().insertNFTs(DataStorage.NFTs);
         nftAdapter.update(nftDb.NFTDao().getAll());

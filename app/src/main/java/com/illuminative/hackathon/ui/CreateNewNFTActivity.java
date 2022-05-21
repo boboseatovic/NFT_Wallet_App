@@ -173,7 +173,7 @@ public class CreateNewNFTActivity extends AppCompatActivity {
                 if (ContextCompat.checkSelfPermission(CreateNewNFTActivity.this,
                         Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(getApplicationContext(),
-                                    "FlagUp Requires Access to Camara.", Toast.LENGTH_SHORT)
+                            "FlagUp Requires Access to Camara.", Toast.LENGTH_SHORT)
                             .show();
                 } else if (ContextCompat.checkSelfPermission(CreateNewNFTActivity.this,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
