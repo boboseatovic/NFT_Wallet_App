@@ -32,6 +32,7 @@ public class SingleNFTActivity extends AppCompatActivity {
 
     private String collectionText;
     private String priceText;
+    private String priceDollarText;
     private String imageUrlText;
     private String titleText;
     private String descriptionText;
@@ -39,6 +40,7 @@ public class SingleNFTActivity extends AppCompatActivity {
     private ImageView imageUrl;
     private TextView title;
     private TextView price;
+    private TextView priceDollar;
     private TextView collection;
     private TextView description;
     private Button updateButton;
@@ -56,6 +58,7 @@ public class SingleNFTActivity extends AppCompatActivity {
         imageUrlText = intent.getStringExtra(PreviewActivity.EXTRA_IMAGE_URL);
         titleText = intent.getStringExtra(PreviewActivity.EXTRA_TITLE);
         priceText = intent.getStringExtra(PreviewActivity.EXTRA_PRICE);
+        priceDollarText = intent.getStringExtra(PreviewActivity.EXTRA_DOLLAR);
         collectionText = intent.getStringExtra(PreviewActivity.EXTRA_COLLECTION);
         descriptionText = intent.getStringExtra(PreviewActivity.EXTRA_DESCRIPTION);
         nft = (NFT) intent.getSerializableExtra(PreviewActivity.EXTRA_NFT);
@@ -63,6 +66,7 @@ public class SingleNFTActivity extends AppCompatActivity {
         imageUrl = findViewById(R.id.img);
         title = findViewById(R.id.title);
         price = findViewById(R.id.price);
+        priceDollar = findViewById(R.id.priceDollar);
         collection = findViewById(R.id.collection);
         description = findViewById(R.id.description);
         updateButton = findViewById(R.id.update);
@@ -137,6 +141,7 @@ public class SingleNFTActivity extends AppCompatActivity {
 
         title.setText(String.format("%s", titleText));
         price.setText(String.format("%s", priceText + " ETH"));
+        priceDollar.setText(String.format("%s", priceDollarText + " $"));
         collection.setText(String.format("%s", "Collection: " + collectionText));
         description.setText(String.format("%s", descriptionText));
     }
