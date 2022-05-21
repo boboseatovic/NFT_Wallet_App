@@ -33,6 +33,10 @@
         <activity
             android:name=".ui.SingleNFTActivity"
             android:exported="true" />
+
+        <activity
+            android:name=".ui.UpdateActivity"
+            android:exported="true" />
     </application>
 
 
