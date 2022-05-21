@@ -41,13 +41,15 @@ public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> 
                 if (onClickListener != null) onClickListener.onItemClick(nft);
             });
 
-            Glide.with(holder.NFTImageView)
-                .load(nft.imageUrl)
-                .into(holder.NFTImageView);
+
 
             holder.NFTTitleTextView.setText(String.format("%s", nft.title));
 
             holder.NFTisCollectionTextView.setText(String.format("%s", nft.collection));
+
+            Glide.with(holder.NFTImageView)
+                .load(nft.imageUrl)
+                .into(holder.NFTImageView);
         }
 
 
@@ -80,7 +82,7 @@ public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> 
 
     @FunctionalInterface
     public interface OnClickListener {
-        public void onItemClick(NFT item);
+         void onItemClick(NFT item);
     }
 
     public void setOnClickListener(OnClickListener onClickListener) {
