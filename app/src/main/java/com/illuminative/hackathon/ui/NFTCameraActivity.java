@@ -66,6 +66,8 @@ public class NFTCameraActivity extends AppCompatActivity {
                 }
                 else if (optionsMenu[i].equals("Exit")) {
                     dialogInterface.dismiss();
+                    Intent exit = new Intent(context, CreateNewNFTActivity.class);
+                    startActivity(exit);
                 }
             }
         });
@@ -146,6 +148,9 @@ public class NFTCameraActivity extends AppCompatActivity {
                     }
                     break;
             }
+        } else {
+            Intent intent = new Intent(this, CreateNewNFTActivity.class);
+            startActivity(intent);
         }
     }
 }
