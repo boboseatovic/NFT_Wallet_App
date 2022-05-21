@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -45,6 +46,20 @@ public class SingleNFTActivity extends AppCompatActivity {
         description = findViewById(R.id.description);
 
         setView();
+
+        setUpdateButton();
+
+        setDeleteButton();
+    }
+
+    private void setDeleteButton() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(SingleNFTActivity.this);
+        builder.setMessage("Are you sure you want to delete the NFT?");
+        builder.setTitle("Delete NFT!");
+        builder.setCancelable(false);
+    }
+
+    private void setUpdateButton() {
     }
 
     private void setView() {

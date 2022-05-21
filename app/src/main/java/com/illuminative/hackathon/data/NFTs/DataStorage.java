@@ -304,7 +304,7 @@ public class DataStorage {
                     "new NFT",
                     "https://lh3.googleusercontent.com/xZ4a3gbXAj9J-a5w8H5TIXJyZwQipIGybjXo1LMxafy3PCo71XaSmQ_c2p55tMlek3RoHz_cBZkS0t4si02D7YrZW7Iyzk2NjNo0tQ=w600",
                     1.9,
-                    "N3",
+                    "",
                     true,
                     false
 
@@ -315,7 +315,7 @@ public class DataStorage {
                     "TWEET",
                     "https://lh3.googleusercontent.com/nexxWOXgVQAiwQ3qOQ7wXAehat8EfkuuAIejhqN5DxfEEWfDwmitDx8qcLNU3fEkXfEflgw6BzgRGUmIKptv7yqI8Q=w600",
                     20.0,
-                    "TWITTER",
+                    "",
                     true,
                     false
 
@@ -326,7 +326,7 @@ public class DataStorage {
                     "kitty",
                     "https://lh3.googleusercontent.com/fbWnVwvshzVW7gnFduhR4I-aNxn9O0UKSBPaggZfqj6dHg_ZOnp2pjRuZNzMhBhWoBIYfzoCgbGaENOkx9pkYGwE8g=w600",
                     28.0,
-                    "kitty",
+                    "",
                     true,
                     false
 
@@ -337,7 +337,7 @@ public class DataStorage {
                     "Wolf",
                     "https://lh3.googleusercontent.com/c5lUanVv4apS58q6dwqtSqhPTRZPlPXKKC4L_2RQQicoyp1ccuRw9MTF-B8k1q4oH4W1HOoQvkQASc_VQQE08M3NdS3CJu0ovE6E=w600",
                     80.0,
-                    "wolf",
+                    "",
                     true,
                     false
 
@@ -348,7 +348,7 @@ public class DataStorage {
                     "Bird",
                     "https://openseauserdata.com/0x06012c8cf97bead5deae237070f9587f8e7a266d/118156-1554338092.png",
                     5.6,
-                    "Bird",
+                    "",
                     true,
                     false
 
