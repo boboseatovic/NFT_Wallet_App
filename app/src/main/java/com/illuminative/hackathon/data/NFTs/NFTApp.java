@@ -1,11 +1,11 @@
-package com.illuminative.hackathon.NFTs;
+package com.illuminative.hackathon.data.NFTs;
 
 import android.app.Application;
 
 
 import androidx.room.Room;
 
-import com.illuminative.hackathon.db.AppDatabase;
+import com.illuminative.hackathon.data.db.AppDatabase;
 
 
 public class NFTApp extends Application{
