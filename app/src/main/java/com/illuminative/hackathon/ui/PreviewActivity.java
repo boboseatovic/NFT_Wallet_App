@@ -28,6 +28,7 @@ public class PreviewActivity extends AppCompatActivity {
     public static final String EXTRA_DOLLAR = "com.illuminative.hackathon.ui.EXTRA_DOLLAR";
     public static final String EXTRA_COLLECTION = "com.illuminative.hackathon.ui.EXTRA_COLLECTION";
     public static final String EXTRA_NFT = "com.illuminative.hackathon.ui.EXTRA_NFT";
+    public static final String EXTRA_SOLD = "com.illuminative.hackathon.ui.EXTRA_SOLD";
 
     private FloatingActionButton addButton;
     private RecyclerView rvNFTs;
@@ -70,7 +71,7 @@ public class PreviewActivity extends AppCompatActivity {
         Double priceDollar1 = (double)Math.round(nft.price * 1973.3 * 100)/100;
         String priceDollar = priceDollar1.toString();
         String collection = nft.collection;
-        //String sold = nft.sold.toString();
+        Boolean sold = nft.sold;
         Boolean single = nft.single_attr;
 
         Intent intent = new Intent(this, SingleNFTActivity.class);
@@ -79,6 +80,7 @@ public class PreviewActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_TITLE, title);
         intent.putExtra(EXTRA_PRICE, price);
         intent.putExtra(EXTRA_DOLLAR, priceDollar);
+        intent.putExtra(EXTRA_SOLD, sold);
         if(single) {
             collection = "Single NFT";
         } else {
