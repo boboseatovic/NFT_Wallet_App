@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -70,23 +71,33 @@ public class CreateNewNFTActivity extends AppCompatActivity {
 
     private void addnft() {
 
-        TextInputEditText title = findViewById(R.id.title);
-        TextInputEditText text = findViewById(R.id.text); //description
-        TextInputEditText price = findViewById(R.id.create_new_nft_price_label);
-        TextInputEditText coll = findViewById(R.id.password_edit_text);
+        TextInputEditText etTitle = findViewById(R.id.title);
+        TextInputEditText etText = findViewById(R.id.text); //description
+        TextInputEditText etPrice = findViewById(R.id.create_new_nft_price_label);
+        TextInputEditText etColl = findViewById(R.id.password_edit_text);
 
+        String title = etTitle.getText().toString();
+        String text = etText.getText().toString();
+        String price = etPrice.getText().toString();
+        String coll = etColl.getText().toString();
 
-        if(coll.getText().toString()== null){
+        if(TextUtils.isEmpty(title) || TextUtils.isEmpty(text) || TextUtils.isEmpty(price) || TextUtils.isEmpty(nft.imageUrl) || !TextUtils.isDigitsOnly(price)) {
+            Toast.makeText(this, R.string.alert_all_fields_required, Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        single = false;
+        if(coll == null){
             single = true;
         }
-        single = false;
 
-        nft.title= title.getText().toString();
-        nft.description= text.getText().toString();
-        nft.price=Double.parseDouble(price.getText().toString());
-        nft.collection=coll.getText().toString();
+
+        nft.title= title;
+        nft.description= text;
+        nft.price=Double.parseDouble(price);
+        nft.collection=coll;
         nft.single_attr=single;
-        nft.sold=false;
+        nft.sold = false;
 
 
         AppDb.NFTDao().insertNFT(nft);

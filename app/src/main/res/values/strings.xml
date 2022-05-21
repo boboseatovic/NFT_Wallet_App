@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">NFT_Wallet</string>
     <string name="content_description_image">Image</string>
-    <string name="alert_all_fields_required">All fields are required!</string>
+    <string name="alert_all_fields_required">Check your entry and try again!</string>
 </resources>
