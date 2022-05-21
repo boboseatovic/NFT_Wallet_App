@@ -3,15 +3,27 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
+        <entry key="..\:/Users/Intranet/Documents/Android projects/app/src/main/res/layout/activity_collection_nft.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Intranet/Documents/Android projects/app/src/main/res/layout/create_new_activity.xml" value="0.19479166666666667" />
+        <entry key="..\:/Users/Intranet/Documents/Android projects/app/src/main/res/layout/nft_camera_activity.xml" value="0.15052083333333333" />
+        <entry key="..\:/Users/Intranet/Documents/Android projects/app/src/main/res/layout/preview_activity.xml" value="0.19479166666666667" />
+        <entry key="..\:/Users/Intranet/Documents/Android projects/app/src/main/res/layout/single_nft_preview.xml" value="0.2" />
+=======
         <entry key="..\:/Users/Zvone/Desktop/4. semestar/NFT/app/src/main/res/layout/create_new_activity.xml" value="0.2140625" />
         <entry key="..\:/Users/Zvone/Desktop/4. semestar/NFT/app/src/main/res/layout/single_nft.xml" value="0.2140625" />
         <entry key="..\:/Users/Zvone/Desktop/4. semestar/NFT/app/src/main/res/layout/single_nft_preview.xml" value="0.10410334346504559" />
+>>>>>>> cb8565600d4334e564320af0aeea5ecee2534eb7
         <entry key="..\:/Users/borna/AndroidStudioProjects/NFT_Wallet_App/app/src/main/res/layout/create_new_activity.xml" value="0.3671875" />
       </map>
     </option>
   </component>
+<<<<<<< HEAD
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+=======
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+>>>>>>> cb8565600d4334e564320af0aeea5ecee2534eb7
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

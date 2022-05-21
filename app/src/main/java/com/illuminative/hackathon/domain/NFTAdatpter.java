@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.illuminative.hackathon.R;
 import com.illuminative.hackathon.data.db.NFT;
 
@@ -17,7 +18,7 @@ import java.util.List;
 
 public class NFTAdatpter extends RecyclerView.Adapter<NFTAdatpter.NFTsViewHolder> {
 
-    private View.OnClickListener onClickListener;
+    private OnClickListener onClickListener;
     private List<NFT> nft_data;
 
     public NFTAdatpter(List<NFT> nfts) {this.nft_data = nfts;}
@@ -30,16 +31,33 @@ public class NFTAdatpter extends RecyclerView.Adapter<NFTAdatpter.NFTsViewHolder
         return new NFTsViewHolder(view);
     }
 
-    @SuppressLint("DefaulLocale")
+    @SuppressLint("DefaultLocale")
     @Override
     public void onBindViewHolder(@NonNull NFTsViewHolder holder, int position) {
-        return ;
+            NFT nft = nft_data.get(position);
+
+            holder.itemView.setOnClickListener(v -> {
+                if (onClickListener != null) onClickListener.onItemClick(nft);
+            });
+
+            Glide.with(holder.NFTImageView)
+                .load(nft.imageUrl)
+                .into(holder.NFTImageView);
+
+            holder.NFTTitleTextView.setText(String.format("%s", nft.title));
+
+            if (nft.collection != null) {
+                holder.NFTisCollectionTextView.setText(nft.collection);
+            } else {
+                holder.NFTisCollectionTextView.setText("No");
+            }
+
         };
 
 
     @Override
     public int getItemCount() {
-        return 0;
+        return nft_data != null ? nft_data.size() : 0;
     }
 
     public static class NFTsViewHolder extends RecyclerView.ViewHolder{
@@ -59,10 +77,10 @@ public class NFTAdatpter extends RecyclerView.Adapter<NFTAdatpter.NFTsViewHolder
 
     @FunctionalInterface
     public interface OnClickListener {
-        void onItemClick(NFT item);
+        public void onItemClick(NFT item);
     }
 
     public void setOnClickListener(OnClickListener onClickListener) {
-        this.onClickListener = (View.OnClickListener) onClickListener;
+        this.onClickListener = onClickListener;
     }
 }

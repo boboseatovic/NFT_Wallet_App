@@ -71,4 +71,11 @@ dependencies {
     implementation "androidx.camera:camera-lifecycle:$camerax_version"
     implementation "androidx.camera:camera-view:1.0.0-alpha14"
 
+    //Za ovaj generated error?
+    //implementation 'org.glassfish:javax.annotation:10.0-b28'
+
+
+
+
+
 }
