@@ -42,13 +42,18 @@ public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> 
             });
 
 
-
             holder.NFTTitleTextView.setText(String.format("%s", nft.title));
 
-            holder.NFTisCollectionTextView.setText(String.format("%s", nft.collection));
+            if (!nft.single_attr) {
+                holder.NFTisCollectionTextView.setText(String.format("%s", nft.collection));
+            } else {
+                holder.NFTisCollectionTextView.setText("Single NFT");
+            }
 
-            Glide.with(holder.NFTImageView)
+
+            Glide.with(holder.itemView)
                 .load(nft.imageUrl)
+                    .placeholder(R.mipmap.ic_launcher_round)
                 .into(holder.NFTImageView);
         }
 

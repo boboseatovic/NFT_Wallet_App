@@ -24,7 +24,7 @@ public class DataStorage {
                      1L,
                     "#614",
                     "5,555 adventurous Chimpers inhabit the Chimpverse and they are ready to !CHIMP",
-                    "https://lh3.googleusercontent.com/_zcE_exhy79H-7OnRjwrEUuScm8bpRno81WxoTiX8kha53vIRhUaVm6dyfRmNuhriS6BrBfwQ5TG_3UzTx0NJ2yPdzFWm1swLBPrmg=w600",
+                    "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_FMjpg_UX1000_.jpg",
                     0.5,
                     "Chimpers",
                     false,
