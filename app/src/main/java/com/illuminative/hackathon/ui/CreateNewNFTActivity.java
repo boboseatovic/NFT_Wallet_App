@@ -23,14 +23,22 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
 import com.illuminative.hackathon.R;
+import com.illuminative.hackathon.data.db.AppDatabase;
+import com.illuminative.hackathon.data.db.NFT;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CreateNewNFTActivity extends AppCompatActivity {
 
     Button buttonAddNFTImage;
+    Button addNftButton;
+
+    AppDatabase AppDb = AppDatabase.getInstance(this);
+
 
     ImageView imageView;
     public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 101;
@@ -47,8 +55,43 @@ public class CreateNewNFTActivity extends AppCompatActivity {
     private void setUpAddImage() {
         buttonAddNFTImage = findViewById(R.id.add_image);
         imageView = findViewById(R.id.photo);
+        addNftButton = findViewById(R.id.add_nft_button);
+
 
         buttonAddNFTImage.setOnClickListener(v -> openNewAddPhotoActivity());
+        addNftButton.setOnClickListener(v -> addnft());
+
+    }
+
+
+    public boolean single;
+
+    NFT nft = new NFT();
+
+    private void addnft() {
+
+        TextInputEditText title = findViewById(R.id.title);
+        TextInputEditText text = findViewById(R.id.text); //description
+        TextInputEditText price = findViewById(R.id.create_new_nft_price_label);
+        TextInputEditText coll = findViewById(R.id.password_edit_text);
+
+
+        if(coll.getText().toString()== null){
+            single = true;
+        }
+        single = false;
+
+        nft.title= title.getText().toString();
+        nft.description= text.getText().toString();
+        nft.price=Double.parseDouble(price.getText().toString());
+        nft.collection=coll.getText().toString();
+        nft.single_attr=single;
+        nft.sold=false;
+
+
+        AppDb.NFTDao().insertNFT(nft);
+
+
     }
 
     private void openNewAddPhotoActivity() {
@@ -140,6 +183,7 @@ public class CreateNewNFTActivity extends AppCompatActivity {
                     if (resultCode == RESULT_OK && data != null) {
                         Bitmap selectedImage = (Bitmap) data.getExtras().get("data");
                         imageView.setImageBitmap(selectedImage);
+                        nft.imageUrl = getImageUri(getApplicationContext(),selectedImage).toString();
                     }
                     break;
                 case 1:
@@ -152,6 +196,7 @@ public class CreateNewNFTActivity extends AppCompatActivity {
                                 cursor.moveToFirst();
                                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                                 String picturePath = cursor.getString(columnIndex);
+                                nft.imageUrl = picturePath;
                                 imageView.setImageBitmap(BitmapFactory.decodeFile(picturePath));
                                 cursor.close();
                             }
@@ -160,6 +205,13 @@ public class CreateNewNFTActivity extends AppCompatActivity {
                     break;
             }
         }
+    }
+
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
     }
 
 
