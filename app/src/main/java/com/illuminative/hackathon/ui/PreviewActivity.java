@@ -29,7 +29,7 @@ public class PreviewActivity extends AppCompatActivity {
 
         setContentView(R.layout.preview_activity);
 
-        setupDatabase();
+        //setupDatabase();
 
         setupRecyclerView();
 

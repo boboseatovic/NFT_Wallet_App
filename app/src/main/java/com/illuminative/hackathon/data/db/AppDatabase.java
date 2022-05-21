@@ -9,5 +9,5 @@ import androidx.room.RoomDatabase;
 
 public abstract class AppDatabase extends RoomDatabase {
 
-    public abstract @NonNull NFTDAO NFTDao();
+    public abstract NFTDAO NFTDao();
 }
