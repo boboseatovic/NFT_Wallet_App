@@ -1,6 +1,8 @@
 package com.illuminative.hackathon.domain;
 
 import android.annotation.SuppressLint;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +14,19 @@ import com.illuminative.hackathon.R;
 import com.illuminative.hackathon.data.db.NFT;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.Lifecycle;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> {
 
     private OnClickListener onClickListener;
     private List<NFT> nft_data;
+    private static List<String> collections;
+    private static List<String> newCollections;
 
     public NFTAdapter(List<NFT> nfts) {this.nft_data = nfts;}
 
@@ -29,28 +35,33 @@ public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> 
     public NFTsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.activity_collection_nft, parent, false);
+
         return new NFTsViewHolder(view);
     }
+
 
     @SuppressLint("DefaultLocale")
     @Override
     public void onBindViewHolder(@NonNull NFTsViewHolder holder, int position) {
-            NFT nft = nft_data.get(position);
+        NFT nft = nft_data.get(position);
 
-            holder.itemView.setOnClickListener(v -> {
-                if (onClickListener != null) onClickListener.onItemClick(nft);
-            });
+        holder.itemView.setOnClickListener(v -> {
+            if (onClickListener != null) onClickListener.onItemClick(nft);
+        });
 
+        holder.NFTTitleTextView.setText(String.format("%s", nft.title));
 
+        if (nft.single_attr) {
+            holder.NFTisCollectionTextView.setText("Single NFT");
+        } else {
+            holder.NFTisCollectionTextView.setText("part of an" + nft.collection + "NFT Collection");
+        }
 
-            holder.NFTTitleTextView.setText(String.format("%s", nft.title));
-
-            holder.NFTisCollectionTextView.setText(String.format("%s", nft.collection));
-
-            Glide.with(holder.NFTImageView)
+        Glide.with(holder.NFTImageView)
                 .load(nft.imageUrl)
                 .into(holder.NFTImageView);
-        }
+
+    }
 
 
     @Override
@@ -84,6 +95,7 @@ public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> 
     public interface OnClickListener {
          void onItemClick(NFT item);
     }
+
 
     public void setOnClickListener(OnClickListener onClickListener) {
         this.onClickListener = onClickListener;

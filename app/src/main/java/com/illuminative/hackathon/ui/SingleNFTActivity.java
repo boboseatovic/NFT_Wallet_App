@@ -1,18 +1,35 @@
 package com.illuminative.hackathon.ui;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListUpdateCallback;
 
 import com.bumptech.glide.Glide;
 import com.illuminative.hackathon.R;
+import com.illuminative.hackathon.data.db.AppDatabase;
+import com.illuminative.hackathon.data.db.NFT;
+import com.illuminative.hackathon.data.db.NFTDAO;
+import com.illuminative.hackathon.domain.NFTAdapter;
+
+import java.util.List;
 
 
 public class SingleNFTActivity extends AppCompatActivity {
+    private AppDatabase nftDb = AppDatabase.getInstance(this);
+
+
+    private NFT nft;
+
     private String collectionText;
     private String priceText;
     private String imageUrlText;
@@ -24,6 +41,9 @@ public class SingleNFTActivity extends AppCompatActivity {
     private TextView price;
     private TextView collection;
     private TextView description;
+    private Button updateButton;
+    private Button deleteButton;
+    private List<NFT> nft_data;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,20 +51,82 @@ public class SingleNFTActivity extends AppCompatActivity {
 
         setContentView(R.layout.single_nft);
         Intent intent = getIntent();
+        nftDb.NFTDao().getAll();
 
         imageUrlText = intent.getStringExtra(PreviewActivity.EXTRA_IMAGE_URL);
         titleText = intent.getStringExtra(PreviewActivity.EXTRA_TITLE);
         priceText = intent.getStringExtra(PreviewActivity.EXTRA_PRICE);
         collectionText = intent.getStringExtra(PreviewActivity.EXTRA_COLLECTION);
         descriptionText = intent.getStringExtra(PreviewActivity.EXTRA_DESCRIPTION);
+        nft = (NFT) intent.getSerializableExtra(PreviewActivity.EXTRA_NFT);
 
         imageUrl = findViewById(R.id.img);
         title = findViewById(R.id.title);
         price = findViewById(R.id.price);
         collection = findViewById(R.id.collection);
         description = findViewById(R.id.description);
+        updateButton = findViewById(R.id.update);
+        deleteButton = findViewById(R.id.delete);
 
         setView();
+
+        setUpdateButton();
+
+        setDeleteButton();
+    }
+
+
+    private void setDeleteButton() {
+        deleteButton.setOnClickListener(v -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(SingleNFTActivity.this);
+            builder.setMessage("Are you sure you want to delete the NFT?");
+            builder.setTitle(nft.title);
+            builder.setCancelable(false);
+
+            builder
+                    .setPositiveButton(
+                            "Yes",
+                            new DialogInterface
+                                    .OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int which)
+                                {
+
+
+                                    finish();
+                                }
+                            });
+
+            builder
+                    .setNegativeButton(
+                            "No",
+                            new DialogInterface
+                                    .OnClickListener() {
+
+                                @Override
+                                public void onClick(DialogInterface dialog,
+                                                    int which)
+                                {
+
+                                    // If user click no
+                                    // then dialog box is canceled.
+                                    dialog.cancel();
+                                }
+                            });
+
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+
+
+                }
+        );
+
+
+    }
+
+    private void setUpdateButton() {
     }
 
     private void setView() {
