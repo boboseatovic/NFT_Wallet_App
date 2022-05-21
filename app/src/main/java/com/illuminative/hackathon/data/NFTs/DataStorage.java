@@ -1,10 +1,10 @@
-package com.illuminative.hackathon.NFTs;
+package com.illuminative.hackathon.data.NFTs;
 
 
 
 import java.util.Arrays;
 import java.util.List;
-import com.illuminative.hackathon.db.NFT;
+import com.illuminative.hackathon.data.db.NFT;
 
 /*
 *  this.id = id;

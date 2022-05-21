@@ -1,4 +1,4 @@
-package com.illuminative.hackathon.db;
+package com.illuminative.hackathon.data.db;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
