@@ -11,20 +11,20 @@
         android:theme="@style/Theme.NFT_Wallet" >
 
         <activity
-        android:name =".ui.PreviewActivity"
-        android:exported = "true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:name =".ui.PreviewActivity"
+            android:exported = "true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
-    </activity>
+        </activity>
 
-       <activity
-           android:name=".ui.CreateNewNFTActivity"
-           android:exported="true"
-           ></activity>
+        <activity
+            android:name=".ui.CreateNewNFTActivity"
+            android:exported="true"
+            ></activity>
 
         <activity
             android:name=".ui.NFTCameraActivity"
