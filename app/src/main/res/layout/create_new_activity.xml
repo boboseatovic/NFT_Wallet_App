@@ -91,7 +91,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:hint="Price">
+        android:hint="ETH Price">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/create_new_nft_price_label"
