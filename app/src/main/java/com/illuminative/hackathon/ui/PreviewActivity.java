@@ -25,6 +25,7 @@ public class PreviewActivity extends AppCompatActivity {
     public static final String EXTRA_IMAGE_URL = "com.illuminative.hackathon.ui.EXTRA_IMAGE_URL";
     public static final String EXTRA_TITLE = "com.illuminative.hackathon.ui.EXTRA_TITLE";
     public static final String EXTRA_PRICE = "com.illuminative.hackathon.ui.EXTRA_PRICE";
+    public static final String EXTRA_DOLLAR = "com.illuminative.hackathon.ui.EXTRA_DOLLAR";
     public static final String EXTRA_COLLECTION = "com.illuminative.hackathon.ui.EXTRA_COLLECTION";
     public static final String EXTRA_NFT = "com.illuminative.hackathon.ui.EXTRA_NFT";
 
@@ -65,6 +66,8 @@ public class PreviewActivity extends AppCompatActivity {
         String title = nft.title;
         String descripton = nft.description;
         String price = nft.price.toString();
+        Double priceDollar1 = (double)Math.round(nft.price * 1973.3 * 100)/100;
+        String priceDollar = priceDollar1.toString();
         String collection = nft.collection;
         //String sold = nft.sold.toString();
 
@@ -73,6 +76,7 @@ public class PreviewActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_IMAGE_URL, imageUrl);
         intent.putExtra(EXTRA_TITLE, title);
         intent.putExtra(EXTRA_PRICE, price);
+        intent.putExtra(EXTRA_DOLLAR, priceDollar);
         intent.putExtra(EXTRA_COLLECTION, collection);
         intent.putExtra(EXTRA_NFT, nft);
         startActivity(intent);
@@ -80,6 +84,7 @@ public class PreviewActivity extends AppCompatActivity {
 
     private void setupDatabase() {
         nftDb = AppDatabase.getInstance(this);
+        //nftDb.NFTDao().insertNFTs(DataStorage.NFTs);
         nftAdapter.update(nftDb.NFTDao().getAll());
     }
 
