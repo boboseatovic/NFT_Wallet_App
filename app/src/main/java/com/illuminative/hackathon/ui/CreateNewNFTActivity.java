@@ -12,7 +12,7 @@ import com.illuminative.hackathon.R;
 
 public class CreateNewNFTActivity extends AppCompatActivity {
 
-    private Button buttonAddNFT;
+    private Button buttonAddNFTImage;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -20,12 +20,12 @@ public class CreateNewNFTActivity extends AppCompatActivity {
 
         setContentView(R.layout.create_new_activity);
 
-        setUpAddNFT();
+        setUpAddImage();
     }
 
-    private void setUpAddNFT() {
-        buttonAddNFT = findViewById(R.id.add_nft_button);
-        buttonAddNFT.setOnClickListener(v -> openNewAddPhotoActivity());
+    private void setUpAddImage() {
+        buttonAddNFTImage = findViewById(R.id.add_image);
+        buttonAddNFTImage.setOnClickListener(v -> openNewAddPhotoActivity());
     }
 
     private void openNewAddPhotoActivity() {
