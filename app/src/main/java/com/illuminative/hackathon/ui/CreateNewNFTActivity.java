@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -75,11 +76,13 @@ public class CreateNewNFTActivity extends AppCompatActivity {
         TextInputEditText etText = findViewById(R.id.text); //description
         TextInputEditText etPrice = findViewById(R.id.create_new_nft_price_label);
         TextInputEditText etColl = findViewById(R.id.password_edit_text);
+        CheckBox etSold = findViewById(R.id.checkBox);
 
         String title = etTitle.getText().toString();
         String text = etText.getText().toString();
         String price = etPrice.getText().toString();
         String coll = etColl.getText().toString();
+        Boolean sold = etSold.isChecked();
 
         if(TextUtils.isEmpty(title) || TextUtils.isEmpty(text) || TextUtils.isEmpty(price) || TextUtils.isEmpty(nft.imageUrl) || !TextUtils.isDigitsOnly(price)) {
             Toast.makeText(this, R.string.alert_all_fields_required, Toast.LENGTH_LONG).show();
@@ -91,13 +94,12 @@ public class CreateNewNFTActivity extends AppCompatActivity {
             single = true;
         }
 
-
         nft.title= title;
         nft.description= text;
         nft.price=Double.parseDouble(price);
         nft.collection=coll;
         nft.single_attr=single;
-        nft.sold = false;
+        nft.sold = sold;
 
 
         AppDb.NFTDao().insertNFT(nft);
