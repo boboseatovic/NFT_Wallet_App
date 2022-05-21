@@ -3,35 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-<<<<<<< HEAD
         <entry key="..\:/Users/borna/AndroidStudioProjects/NFT_Wallet_App/app/src/main/res/layout/activity_collection_nft.xml" value="0.3671875" />
         <entry key="..\:/Users/borna/AndroidStudioProjects/NFT_Wallet_App/app/src/main/res/layout/create_new_activity.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/borna/AndroidStudioProjects/NFT_Wallet_App/app/src/main/res/layout/preview_activity.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/borna/AndroidStudioProjects/NFT_Wallet_App/app/src/main/res/layout/single_nft.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/borna/AndroidStudioProjects/NFT_Wallet_App/app/src/main/res/layout/single_nft_preview.xml" value="0.3333333333333333" />
       </map>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
-=======
-<<<<<<< HEAD
-        <entry key="..\:/Users/borna/AndroidStudioProjects/NFT_Wallet_App/app/src/main/res/layout/create_new_activity.xml" value="0.3671875" />
-        <entry key="..\:/Users/josip/Desktop/illuminative/NFT_Wallet_App/app/src/main/res/layout/create_new_activity.xml" value="0.1125" />
-        <entry key="..\:/Users/josip/Desktop/illuminative/NFT_Wallet_App/app/src/main/res/layout/single_nft.xml" value="0.2" />
-        <entry key="..\:/Users/josip/Desktop/illuminative/NFT_Wallet_App/app/src/main/res/layout/single_nft_preview.xml" value="0.2" />
-      </map>
-    </option>
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="15" project-jdk-type="JavaSDK">
-=======
-        <entry key="..\:/Users/Intranet/Documents/Android projects/app/src/main/res/layout/activity_collection_nft.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/Intranet/Documents/Android projects/app/src/main/res/layout/create_new_activity.xml" value="0.19479166666666667" />
-        <entry key="..\:/Users/Intranet/Documents/Android projects/app/src/main/res/layout/preview_activity.xml" value="0.19479166666666667" />
-        <entry key="..\:/Users/borna/AndroidStudioProjects/NFT_Wallet_App/app/src/main/res/layout/create_new_activity.xml" value="0.3671875" />
-      </map>
-    </option>
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
->>>>>>> e67cdc1adbe019235b114297cff88acf8ded015f
->>>>>>> 6747777ebb305cceb99c7af945838e487b2a0668
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
