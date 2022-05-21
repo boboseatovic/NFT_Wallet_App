@@ -54,7 +54,7 @@ public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> 
         if (nft.single_attr) {
             holder.NFTisCollectionTextView.setText("Single NFT");
         } else {
-            holder.NFTisCollectionTextView.setText("part of an" + nft.collection + "NFT Collection");
+            holder.NFTisCollectionTextView.setText(nft.collection + " NFT Collection");
         }
 
         Glide.with(holder.NFTImageView)
