@@ -91,7 +91,8 @@ public class CreateNewNFTActivity extends AppCompatActivity {
 
         AppDb.NFTDao().insertNFT(nft);
 
-
+        Intent intent = new Intent(this, PreviewActivity.class);
+        startActivity(intent);
     }
 
     private void openNewAddPhotoActivity() {
