@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NFT_Wallet</string>
+    <string name="content_description_movie_image">Movie image</string>
 </resources>
