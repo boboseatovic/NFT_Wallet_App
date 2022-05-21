@@ -29,8 +29,6 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="40dp"
             android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img"
             tools:text="Title slike" />
 
         <TextView
@@ -40,7 +38,6 @@
             android:layout_below="@+id/title"
             android:layout_marginStart="40dp"
             android:layout_marginTop="20dp"
-            app:layout_constraintTop_toBottomOf="@id/title"
             tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." />
 
         <TextView
@@ -62,10 +59,25 @@
             android:layout_marginStart="40dp"
             android:layout_marginTop="40dp"
             android:textSize="25sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img"
-            tools:text="Title slike" />
+            tools:text="Collection name" />
 
+        <Button
+            android:id="@+id/update"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_below="@id/collection"
+            android:layout_alignStart="@+id/collection"
+            android:layout_marginTop="70dp"
+            android:text="Update" />
+
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_alignEnd="@+id/price"
+            android:layout_alignTop="@id/update"
+            android:text="Delete"
+            />
 
 
     </RelativeLayout>
