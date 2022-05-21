@@ -1,29 +1,18 @@
 package com.illuminative.hackathon.ui;
 
-import android.content.pm.PackageManager;
-import android.graphics.Camera;
+import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.widget.Button;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.camera.core.CameraSelector;
-import androidx.camera.core.ImageAnalysis;
-import androidx.camera.core.ImageCapture;
-import androidx.camera.core.Preview;
-import androidx.camera.lifecycle.ProcessCameraProvider;
-import androidx.camera.view.PreviewView;
-import androidx.core.content.ContextCompat;
-import androidx.lifecycle.LifecycleOwner;
 
-import com.google.common.util.concurrent.ListenableFuture;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.illuminative.hackathon.R;
-
-import java.util.concurrent.ExecutionException;
 
 public class CreateNewNFTActivity extends AppCompatActivity {
 
+    private Button buttonAddNFT;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -31,8 +20,16 @@ public class CreateNewNFTActivity extends AppCompatActivity {
 
         setContentView(R.layout.create_new_activity);
 
-
+        setUpAddNFT();
     }
 
-}
+    private void setUpAddNFT() {
+        buttonAddNFT = findViewById(R.id.add_nft_button);
+        buttonAddNFT.setOnClickListener(v -> openNewAddPhotoActivity());
+    }
 
+    private void openNewAddPhotoActivity() {
+        Intent intent = new Intent(this, NFTCameraActivity.class);
+        startActivity(intent);
+    }
+}
