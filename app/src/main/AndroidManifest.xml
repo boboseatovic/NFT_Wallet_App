@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NFT_Wallet" >
     <activity
-        android:name =".ui.CreateNewNFTActivity"
+        android:name =".ui.PreviewActivity"
         android:exported = "true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
