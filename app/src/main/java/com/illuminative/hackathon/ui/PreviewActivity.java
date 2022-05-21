@@ -71,6 +71,7 @@ public class PreviewActivity extends AppCompatActivity {
         String priceDollar = priceDollar1.toString();
         String collection = nft.collection;
         //String sold = nft.sold.toString();
+        Boolean single = nft.single_attr;
 
         Intent intent = new Intent(this, SingleNFTActivity.class);
         intent.putExtra(EXTRA_DESCRIPTION, descripton);
@@ -78,6 +79,11 @@ public class PreviewActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_TITLE, title);
         intent.putExtra(EXTRA_PRICE, price);
         intent.putExtra(EXTRA_DOLLAR, priceDollar);
+        if(single) {
+            collection = "Single NFT";
+        } else {
+            collection = "Collection: " + collection;
+        }
         intent.putExtra(EXTRA_COLLECTION, collection);
         intent.putExtra(EXTRA_NFT, nft);
         startActivity(intent);

@@ -92,7 +92,7 @@ public class CreateNewNFTActivity extends AppCompatActivity {
         }
 
         single = false;
-        if(coll == null){
+        if(TextUtils.isEmpty(coll)){
             single = true;
         }
 

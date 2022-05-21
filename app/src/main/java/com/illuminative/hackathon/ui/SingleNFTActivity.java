@@ -147,7 +147,7 @@ public class SingleNFTActivity extends AppCompatActivity {
         title.setText(String.format("%s", titleText));
         price.setText(String.format("%s", priceText + " ETH"));
         priceDollar.setText(String.format("%s", priceDollarText + " $"));
-        collection.setText(String.format("%s", "Collection: " + collectionText));
+        collection.setText(String.format("%s", collectionText));
         description.setText(String.format("%s", descriptionText));
     }
 }
