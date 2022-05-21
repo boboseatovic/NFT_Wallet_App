@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,6 +37,7 @@ public class SingleNFTActivity extends AppCompatActivity {
     private String imageUrlText;
     private String titleText;
     private String descriptionText;
+    private boolean soldText;
 
     private ImageView imageUrl;
     private TextView title;
@@ -45,6 +47,7 @@ public class SingleNFTActivity extends AppCompatActivity {
     private TextView description;
     private Button updateButton;
     private Button deleteButton;
+    private TextView sold;
     private List<NFT> nft_data;
 
     @Override
@@ -63,6 +66,7 @@ public class SingleNFTActivity extends AppCompatActivity {
         collectionText = intent.getStringExtra(PreviewActivity.EXTRA_COLLECTION);
         descriptionText = intent.getStringExtra(PreviewActivity.EXTRA_DESCRIPTION);
         nft = (NFT) intent.getSerializableExtra(PreviewActivity.EXTRA_NFT);
+        soldText = intent.getBooleanExtra(PreviewActivity.EXTRA_SOLD, false);
 
         imageUrl = findViewById(R.id.img);
         title = findViewById(R.id.title);
@@ -72,6 +76,7 @@ public class SingleNFTActivity extends AppCompatActivity {
         description = findViewById(R.id.description);
         updateButton = findViewById(R.id.update);
         deleteButton = findViewById(R.id.delete);
+        sold = findViewById(R.id.mark_as_sold);
 
         setView();
 
@@ -88,10 +93,6 @@ public class SingleNFTActivity extends AppCompatActivity {
             builder.setTitle(nft.title);
             builder.setCancelable(false);
             Intent intent = new Intent(this, PreviewActivity.class);
-<<<<<<< HEAD
-
-=======
->>>>>>> c6756be087e2464df8fca8025f10b348c0395830
             builder
                     .setPositiveButton(
                             "Yes",
@@ -152,5 +153,8 @@ public class SingleNFTActivity extends AppCompatActivity {
         priceDollar.setText(String.format("%s", priceDollarText + " $"));
         collection.setText(String.format("%s", collectionText));
         description.setText(String.format("%s", descriptionText));
+        if(soldText){
+            sold.setText("SOLD");
+        }
     }
 }
