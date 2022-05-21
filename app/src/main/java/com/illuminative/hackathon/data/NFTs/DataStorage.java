@@ -20,7 +20,6 @@ public class DataStorage {
 
 
     public static final List<NFT> NFTs = Arrays.asList(
-
             new NFT(
                      1L,
                     "#614",

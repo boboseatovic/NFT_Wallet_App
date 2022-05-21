@@ -12,16 +12,17 @@ import com.illuminative.hackathon.R;
 import com.illuminative.hackathon.data.db.NFT;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class NFTAdatpter extends RecyclerView.Adapter<NFTAdatpter.NFTsViewHolder> {
+public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> {
 
     private OnClickListener onClickListener;
     private List<NFT> nft_data;
 
-    public NFTAdatpter(List<NFT> nfts) {this.nft_data = nfts;}
+    public NFTAdapter(List<NFT> nfts) {this.nft_data = nfts;}
 
     @NonNull
     @Override
@@ -46,18 +47,20 @@ public class NFTAdatpter extends RecyclerView.Adapter<NFTAdatpter.NFTsViewHolder
 
             holder.NFTTitleTextView.setText(String.format("%s", nft.title));
 
-            if (nft.collection != null) {
-                holder.NFTisCollectionTextView.setText(nft.collection);
-            } else {
-                holder.NFTisCollectionTextView.setText("No");
-            }
-
-        };
+            holder.NFTisCollectionTextView.setText(String.format("%s", nft.collection));
+        }
 
 
     @Override
     public int getItemCount() {
         return nft_data != null ? nft_data.size() : 0;
+    }
+
+    public void update(List<NFT> nft_data) {
+        DiffUtilCallback diffUtilCallback = new DiffUtilCallback(this.nft_data, nft_data);
+        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffUtilCallback);
+        diffResult.dispatchUpdatesTo(this);
+        this.nft_data = nft_data;
     }
 
     public static class NFTsViewHolder extends RecyclerView.ViewHolder{
@@ -82,5 +85,43 @@ public class NFTAdatpter extends RecyclerView.Adapter<NFTAdatpter.NFTsViewHolder
 
     public void setOnClickListener(OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
+    }
+
+    public static class DiffUtilCallback extends DiffUtil.Callback {
+
+        private final List<NFT> oldList;
+        private final List<NFT> newList;
+
+        public DiffUtilCallback(List<NFT> oldList, List<NFT> newList) {
+            this.oldList = oldList;
+            this.newList = newList;
+        }
+
+
+        @Override
+        public int getOldListSize() {
+            return oldList != null ? oldList.size() : 0;
+        }
+
+        @Override
+        public int getNewListSize() {
+            return newList != null ? newList.size() : 0;
+        }
+
+        @Override
+        public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
+            NFT oldItem = oldList.get(oldItemPosition);
+            NFT newItem = newList.get(newItemPosition);
+            return oldItem.id.equals(newItem.id);
+        }
+
+        @Override
+        public boolean areContentsTheSame(int oldItemPosition, int newItemPosition) {
+            NFT oldItem = oldList.get(oldItemPosition);
+            NFT newItem = newList.get(newItemPosition);
+            return oldItem.title.equals(newItem.title)
+                    && oldItem.collection.equals(newItem.collection)
+                    && oldItem.imageUrl.equals(newItem.imageUrl);
+        }
     }
 }
