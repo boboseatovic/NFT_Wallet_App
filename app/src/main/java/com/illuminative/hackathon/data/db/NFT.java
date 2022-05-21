@@ -1,5 +1,6 @@
 package com.illuminative.hackathon.data.db;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
@@ -52,6 +53,7 @@ public class NFT {
 
 
 
+    @NonNull
     @Override
     public String toString() {
         return "NFT{" +
