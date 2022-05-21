@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,9 +27,11 @@ import java.util.List;
 
 public class SingleNFTActivity extends AppCompatActivity {
 
+    public static final String UPDATE_NFT = "com.illuminative.hackathon.ui.UPDATE_NFT";
+
     AppDatabase nftDb;
 
-    private NFT nft;
+    private @NonNull NFT nft;
 
     private String collectionText;
     private String priceText;
@@ -75,7 +78,7 @@ public class SingleNFTActivity extends AppCompatActivity {
 
         setView();
 
-        setUpdateButton();
+        setUpdateButton(nft);
 
         setDeleteButton();
     }
@@ -88,10 +91,7 @@ public class SingleNFTActivity extends AppCompatActivity {
             builder.setTitle(nft.title);
             builder.setCancelable(false);
             Intent intent = new Intent(this, PreviewActivity.class);
-<<<<<<< HEAD
 
-=======
->>>>>>> c6756be087e2464df8fca8025f10b348c0395830
             builder
                     .setPositiveButton(
                             "Yes",
@@ -138,7 +138,58 @@ public class SingleNFTActivity extends AppCompatActivity {
 
     }
 
-    private void setUpdateButton() {
+    private void setUpdateButton(@NonNull NFT nft) {
+        updateButton.setOnClickListener(v -> {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(SingleNFTActivity.this);
+                    builder.setMessage("Are you sure you want to update the NFT?");
+                    builder.setTitle(nft.title);
+                    builder.setCancelable(false);
+                    Intent intent = new Intent(this, UpdateActivity.class);
+                    intent.putExtra(UPDATE_NFT, nft);
+
+
+                    builder
+                            .setPositiveButton(
+                                    "Yes",
+                                    new DialogInterface
+                                            .OnClickListener() {
+
+                                        @Override
+                                        public void onClick(DialogInterface dialog,
+                                                            int which)
+                                        {
+
+
+                                            startActivity(intent);
+                                        }
+
+                                    });
+
+                    builder
+                            .setNegativeButton(
+                                    "No",
+                                    new DialogInterface
+                                            .OnClickListener() {
+
+                                        @Override
+                                        public void onClick(DialogInterface dialog,
+                                                            int which)
+                                        {
+
+                                            // If user click no
+                                            // then dialog box is canceled.
+                                            dialog.cancel();
+                                        }
+                                    });
+
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+
+
+                }
+        );
+
+
     }
 
     private void setView() {
