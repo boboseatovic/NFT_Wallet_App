@@ -76,7 +76,7 @@ public class CreateNewNFTActivity extends AppCompatActivity {
         TextInputEditText coll = findViewById(R.id.password_edit_text);
 
 
-        if(coll.getText().toString()== null){
+        if(coll.getText().toString() == " " || coll.getText() == null){
             single = true;
         }
         single = false;

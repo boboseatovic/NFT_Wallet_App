@@ -87,6 +87,7 @@ public class SingleNFTActivity extends AppCompatActivity {
             builder.setMessage("Are you sure you want to delete the NFT?");
             builder.setTitle(nft.title);
             builder.setCancelable(false);
+            Intent intent = new Intent(this, PreviewActivity.class);
 
             builder
                     .setPositiveButton(
@@ -102,8 +103,9 @@ public class SingleNFTActivity extends AppCompatActivity {
                                     nftDb.NFTDao().delete(nft);
 
 
-                                    finish();
+                                    startActivity(intent);
                                 }
+
                             });
 
             builder
