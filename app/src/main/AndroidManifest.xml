@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NFT_Wallet" >
-    <activity
+
+        <activity
         android:name =".ui.PreviewActivity"
         android:exported = "true">
         <intent-filter>
@@ -20,6 +21,15 @@
 
     </activity>
 
+       <activity
+           android:name=".ui.CreateNewNFTActivity"
+           android:exported="true"
+           ></activity>
+
+        <activity
+            android:name=".ui.NFTCameraActivity"
+            android:exported="true"
+            ></activity>
     </application>
 
 
