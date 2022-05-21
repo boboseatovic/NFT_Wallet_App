@@ -2,8 +2,10 @@ package com.illuminative.hackathon.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,6 +41,8 @@ public class PreviewActivity extends AppCompatActivity {
         setupRecyclerView();
 
         setupAddNewNFT();
+
+
     }
 
     private void setupRecyclerView() {

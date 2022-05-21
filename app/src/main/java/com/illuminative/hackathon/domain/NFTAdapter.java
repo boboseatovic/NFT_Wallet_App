@@ -1,6 +1,8 @@
 package com.illuminative.hackathon.domain;
 
 import android.annotation.SuppressLint;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +17,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> {
 
     private OnClickListener onClickListener;
-    private List<NFT> nft_data;
+    private static List<NFT> nft_data;
+    private static List<String> collections;
+    private static List<String> newCollections;
 
     public NFTAdapter(List<NFT> nfts) {this.nft_data = nfts;}
 
@@ -29,33 +34,41 @@ public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> 
     public NFTsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.activity_collection_nft, parent, false);
+
         return new NFTsViewHolder(view);
     }
+
 
     @SuppressLint("DefaultLocale")
     @Override
     public void onBindViewHolder(@NonNull NFTsViewHolder holder, int position) {
-            NFT nft = nft_data.get(position);
+        NFT nft = nft_data.get(position);
 
+        if (nft.single_attr) {
             holder.itemView.setOnClickListener(v -> {
                 if (onClickListener != null) onClickListener.onItemClick(nft);
             });
 
-
             holder.NFTTitleTextView.setText(String.format("%s", nft.title));
-
-            if (!nft.single_attr) {
-                holder.NFTisCollectionTextView.setText(String.format("%s", nft.collection));
-            } else {
-                holder.NFTisCollectionTextView.setText("Single NFT");
-            }
-
-
-            Glide.with(holder.itemView)
-                .load(nft.imageUrl)
+            holder.NFTisCollectionTextView.setText("Single NFT");
+            Glide.with(holder.NFTImageView)
+                    .load(nft.imageUrl)
                     .placeholder(R.mipmap.ic_launcher_round)
-                .into(holder.NFTImageView);
+                    .into(holder.NFTImageView);
+        } else {
+            if(collections.contains(nft.collection)) {
+                holder.itemView.setOnClickListener(v -> {
+                    if (onClickListener != null) onClickListener.onItemClick(nft);
+                });
+                holder.NFTTitleTextView.setText(String.format("%s", nft.collection));
+                holder.NFTisCollectionTextView.setText("NFT Collection");
+                Glide.with(holder.NFTImageView)
+                        .load("https://1734811051.rsc.cdn77.org/data/images/full/392378/monster-mob-nft-collection.png")
+                        .into(holder.NFTImageView);
+                collections.remove(nft.collection);
+            }
         }
+    }
 
 
     @Override
@@ -68,7 +81,22 @@ public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> 
         DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(diffUtilCallback);
         diffResult.dispatchUpdatesTo(this);
         this.nft_data = nft_data;
+        getNFTCollections();
     }
+
+    public static void getNFTCollections() {
+      collections = new ArrayList<>();
+
+      for (int i=0; i<nft_data.size()-1; i++) {
+          if(!collections.contains(nft_data.get(i).collection) && !nft_data.get(i).single_attr) {
+              collections.add(nft_data.get(i).collection);
+              Log.d("Collection", nft_data.get(i).collection);
+          }
+      }
+    }
+
+
+
 
     public static class NFTsViewHolder extends RecyclerView.ViewHolder{
 
