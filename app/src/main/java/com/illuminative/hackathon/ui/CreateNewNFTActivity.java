@@ -81,14 +81,9 @@ public class CreateNewNFTActivity extends AppCompatActivity {
         String price = etPrice.getText().toString();
         String coll = etColl.getText().toString();
 
-
-        if(coll == ""){
-            single = true;
-
         if(TextUtils.isEmpty(title) || TextUtils.isEmpty(text) || TextUtils.isEmpty(price) || TextUtils.isEmpty(nft.imageUrl) || !TextUtils.isDigitsOnly(price)) {
             Toast.makeText(this, R.string.alert_all_fields_required, Toast.LENGTH_LONG).show();
             return;
-
         }
 
         single = false;
@@ -176,7 +171,7 @@ public class CreateNewNFTActivity extends AppCompatActivity {
                 if (ContextCompat.checkSelfPermission(CreateNewNFTActivity.this,
                         Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(getApplicationContext(),
-                                    "FlagUp Requires Access to Camara.", Toast.LENGTH_SHORT)
+                            "FlagUp Requires Access to Camara.", Toast.LENGTH_SHORT)
                             .show();
                 } else if (ContextCompat.checkSelfPermission(CreateNewNFTActivity.this,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
