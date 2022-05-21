@@ -20,7 +20,6 @@ public class DataStorage {
 
 
     public static final List<NFT> NFTs = Arrays.asList(
-
             new NFT(
                      1L,
                     "#614",
@@ -224,7 +223,7 @@ public class DataStorage {
                     19L,
                     "#192",
                     "Created by BoredApeYachtClub",
-                    "https://img.seadn.io/files/084e08e27cd9a31fb46ab48040cffe05.png?auto=format&w=600",
+                    "https://img.seadn.io/files/084e08e27cd9a31fb46ab48040cffe05.png?auto=format&w=600.jpg",
                     6969.0,
                     "Bored Ape Yacht CLub",
                     false,

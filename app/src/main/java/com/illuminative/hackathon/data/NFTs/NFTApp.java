@@ -16,6 +16,7 @@ public class NFTApp extends Application{
         super.onCreate();
         DB = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "NFT_database")
                 .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
                 .build();
 
         DB.NFTDao().insertNFTs(DataStorage.NFTs);
