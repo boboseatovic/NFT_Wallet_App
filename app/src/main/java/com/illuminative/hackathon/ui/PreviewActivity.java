@@ -5,7 +5,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -16,7 +15,6 @@ import com.illuminative.hackathon.data.db.NFT;
 import com.illuminative.hackathon.data.db.NFTDAO;
 import com.illuminative.hackathon.domain.NFTAdapter;
 
-import java.util.List;
 
 public class PreviewActivity extends AppCompatActivity {
 
@@ -25,7 +23,7 @@ public class PreviewActivity extends AppCompatActivity {
     public static final String EXTRA_TITLE = "com.illuminative.hackathon.ui.EXTRA_TITLE";
     public static final String EXTRA_PRICE = "com.illuminative.hackathon.ui.EXTRA_PRICE";
     public static final String EXTRA_COLLECTION = "com.illuminative.hackathon.ui.EXTRA_COLLECTION";
-    //public static String EXTRA_NFT = "com.illuminative.hackathon.ui.EXTRA_NFT";
+
     private FloatingActionButton addButton;
     private RecyclerView rvNFTs;
 
@@ -64,7 +62,7 @@ public class PreviewActivity extends AppCompatActivity {
         String descripton = nft.description;
         String price = nft.price.toString();
         String collection = nft.collection;
-        String sold = nft.sold.toString();
+        //String sold = nft.sold.toString();
 
         Intent intent = new Intent(this, SingleNFTActivity.class);
         intent.putExtra(EXTRA_DESCRIPTION, descripton);
@@ -72,7 +70,6 @@ public class PreviewActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_TITLE, title);
         intent.putExtra(EXTRA_PRICE, price);
         intent.putExtra(EXTRA_COLLECTION, collection);
-        //intent.putExtra(EXTRA_NFT, String.valueOf(nft));
         startActivity(intent);
     }
 

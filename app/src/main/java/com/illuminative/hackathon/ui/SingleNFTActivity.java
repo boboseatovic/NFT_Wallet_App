@@ -10,19 +10,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.illuminative.hackathon.R;
-import com.illuminative.hackathon.data.db.NFT;
+
 
 public class SingleNFTActivity extends AppCompatActivity {
-    private NFT nft;
     private String collectionText;
     private String priceText;
     private String imageUrlText;
     private String titleText;
+    private String descriptionText;
 
     private ImageView imageUrl;
     private TextView title;
     private TextView price;
     private TextView collection;
+    private TextView description;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,22 +31,18 @@ public class SingleNFTActivity extends AppCompatActivity {
 
         setContentView(R.layout.single_nft);
         Intent intent = getIntent();
-        //nft = intent.getParcelableExtra(PreviewActivity.EXTRA_NFT);
 
         imageUrlText = intent.getStringExtra(PreviewActivity.EXTRA_IMAGE_URL);
         titleText = intent.getStringExtra(PreviewActivity.EXTRA_TITLE);
         priceText = intent.getStringExtra(PreviewActivity.EXTRA_PRICE);
         collectionText = intent.getStringExtra(PreviewActivity.EXTRA_COLLECTION);
-
-        /*collectionText = nft.collection;
-        priceText = nft.price;
-        imageUrlText = nft.imageUrl;
-        titleText = nft.title;*/
+        descriptionText = intent.getStringExtra(PreviewActivity.EXTRA_DESCRIPTION);
 
         imageUrl = findViewById(R.id.img);
         title = findViewById(R.id.title);
         price = findViewById(R.id.price);
         collection = findViewById(R.id.collection);
+        description = findViewById(R.id.description);
 
         setView();
     }
@@ -57,7 +54,8 @@ public class SingleNFTActivity extends AppCompatActivity {
                 .into(imageUrl);
 
         title.setText(String.format("%s", titleText));
-        price.setText(String.format("%s", priceText));
-        collection.setText(String.format("%s", collectionText));
+        price.setText(String.format("%s", priceText + " ETH"));
+        collection.setText(String.format("%s", "Collection: " + collectionText));
+        description.setText(String.format("%s", descriptionText));
     }
 }
