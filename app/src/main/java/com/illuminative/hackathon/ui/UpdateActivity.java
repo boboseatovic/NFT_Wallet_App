@@ -19,7 +19,6 @@ import com.illuminative.hackathon.data.db.NFT;
 public class UpdateActivity extends AppCompatActivity {
 
     private @NonNull NFT nft = new NFT();
-    Intent intent = getIntent();
 
     AppDatabase nftDb = AppDatabase.getInstance(this);
 
@@ -40,6 +39,7 @@ public class UpdateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.update_activity);
+        Intent intent = getIntent();
 
         nft = (NFT) intent.getSerializableExtra(SingleNFTActivity.UPDATE_NFT);
 
@@ -52,7 +52,7 @@ public class UpdateActivity extends AppCompatActivity {
         updateImage = findViewById(R.id.update_image);
         updateNFT = findViewById(R.id.update_nft_button);
         updateTitle = findViewById(R.id.update_title);
-        updateDescription = findViewById(R.id.update_image_description);
+        updateDescription = findViewById(R.id.update_text);
         updatePrice = findViewById(R.id.update_new_nft_price_label);
         updateCollection = findViewById(R.id.password_update_text);
 

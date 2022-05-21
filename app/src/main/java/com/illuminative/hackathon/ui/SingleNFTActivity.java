@@ -96,10 +96,7 @@ public class SingleNFTActivity extends AppCompatActivity {
             builder.setTitle(nft.title);
             builder.setCancelable(false);
             Intent intent = new Intent(this, PreviewActivity.class);
-<<<<<<< HEAD
 
-=======
->>>>>>> 9b439386edfdfc387b3d146f7ed8c997e210b0c1
             builder
                     .setPositiveButton(
                             "Yes",
