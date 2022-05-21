@@ -57,6 +57,12 @@ public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> 
             holder.NFTisCollectionTextView.setText(nft.collection + " NFT Collection");
         }
 
+        if (nft.sold) {
+            holder.NFTisSold.setText("SOLD");
+        }
+
+
+
         Glide.with(holder.NFTImageView)
                 .load(nft.imageUrl)
                 .into(holder.NFTImageView);
@@ -81,6 +87,7 @@ public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> 
         final ImageView NFTImageView;
         final TextView NFTTitleTextView;
         final TextView NFTisCollectionTextView;
+        final TextView NFTisSold;
 
         public NFTsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -88,6 +95,7 @@ public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> 
             NFTImageView = itemView.findViewById(R.id.iv_cover);
             NFTTitleTextView = itemView.findViewById(R.id.rv_item_collection_title);
             NFTisCollectionTextView = itemView.findViewById(R.id.rv_item_is_collection);
+            NFTisSold  = itemView.findViewById(R.id.mark_as_sold);
         }
     }
 

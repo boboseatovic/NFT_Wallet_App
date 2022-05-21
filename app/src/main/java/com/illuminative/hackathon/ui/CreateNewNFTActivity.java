@@ -81,14 +81,14 @@ public class CreateNewNFTActivity extends AppCompatActivity {
         String price = etPrice.getText().toString();
         String coll = etColl.getText().toString();
 
-<<<<<<< HEAD
-        if(coll.getText().toString() == " " || coll.getText() == null){
+
+        if(coll == ""){
             single = true;
-=======
+
         if(TextUtils.isEmpty(title) || TextUtils.isEmpty(text) || TextUtils.isEmpty(price) || TextUtils.isEmpty(nft.imageUrl) || !TextUtils.isDigitsOnly(price)) {
             Toast.makeText(this, R.string.alert_all_fields_required, Toast.LENGTH_LONG).show();
             return;
->>>>>>> ae35f4c7726c294cb9bf51a41936c37392a2472c
+
         }
 
         single = false;
