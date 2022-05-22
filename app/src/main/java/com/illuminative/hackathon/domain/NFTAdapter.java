@@ -59,6 +59,8 @@ public class NFTAdapter extends RecyclerView.Adapter<NFTAdapter.NFTsViewHolder> 
 
         if (nft.sold) {
             holder.NFTisSold.setText("SOLD");
+        } else {
+            holder.NFTisSold.setText("");
         }
 
 

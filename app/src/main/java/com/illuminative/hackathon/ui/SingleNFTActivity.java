@@ -79,7 +79,7 @@ public class SingleNFTActivity extends AppCompatActivity {
         description = findViewById(R.id.description);
         updateButton = findViewById(R.id.update);
         deleteButton = findViewById(R.id.delete);
-        sold = findViewById(R.id.mark_as_sold);
+        sold = findViewById(R.id.is_sold);
 
         setView();
 

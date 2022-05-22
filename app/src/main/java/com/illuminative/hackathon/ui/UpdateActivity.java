@@ -43,11 +43,6 @@ public class UpdateActivity extends AppCompatActivity {
 
         nft = (NFT) intent.getSerializableExtra(SingleNFTActivity.UPDATE_NFT);
 
-        setView();
-    }
-
-    private void setView() {
-
         updateImageNFT = findViewById(R.id.update_photo);
         updateImage = findViewById(R.id.update_image);
         updateNFT = findViewById(R.id.update_nft_button);
@@ -55,6 +50,30 @@ public class UpdateActivity extends AppCompatActivity {
         updateDescription = findViewById(R.id.update_text);
         updatePrice = findViewById(R.id.update_new_nft_price_label);
         updateCollection = findViewById(R.id.password_update_text);
+
+        setView();
+
+        setUpdateNFT();
+    }
+
+    private void setUpdateNFT() {
+        updateCollection.setOnClickListener(v -> {
+            nftDb.NFTDao().delete(nft);
+
+            nft.title = updateTitle.getText().toString();
+            nft.description = updateDescription.getText().toString();
+            nft.price = Double.parseDouble(updatePrice.getText().toString());
+            nft.collection = updateCollection.getText().toString();
+
+            nftDb.NFTDao().insertNFT(nft);
+
+            Intent intent = new Intent(this, PreviewActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    private void setView() {
+
 
         Glide.with(updateImageNFT)
                 .load(nft.imageUrl)
@@ -65,6 +84,5 @@ public class UpdateActivity extends AppCompatActivity {
         updateDescription.setText(nft.description);
         updatePrice.setText(nft.price.toString());
         updateCollection.setText(nft.collection);
-
     }
 }

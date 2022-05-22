@@ -73,9 +73,20 @@
             android:layout_height="50dp"
             android:layout_below="@+id/description"
             android:layout_alignStart="@+id/description"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="10dp"
             android:textSize="25sp"
             tools:text="Collection name" />
+
+        <TextView
+            android:id="@+id/is_sold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="300dp"
+            android:layout_alignTop="@id/collection"
+            android:layout_alignBottom="@id/collection"
+            tools:text="SOLD"/>
 
         <Button
             android:id="@+id/update"
@@ -84,7 +95,7 @@
             android:layout_below="@id/collection"
             android:layout_alignStart="@+id/collection"
             android:layout_marginStart="0dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="0dp"
             android:text="Update" />
 
         <Button
@@ -92,6 +103,7 @@
             android:layout_width="150dp"
             android:layout_height="60dp"
             android:layout_marginStart="215dp"
+            android:layout_marginEnd="30dp"
             android:layout_alignTop="@id/update"
             android:layout_alignBottom="@id/update"
             android:text="Delete" />
